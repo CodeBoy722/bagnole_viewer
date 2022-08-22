@@ -3,10 +3,11 @@
 class CarModel{
 
   final String model;
-  final String serial;
+  final String series;
   final String mark;
-  final String owner;
+  final String year;
+  final String image;
 
-  CarModel(this.model, this.serial, this.mark, this.owner);
+  CarModel(this.model, this.series, this.mark, this.year, this.image);
 
 }
