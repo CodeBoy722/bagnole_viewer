@@ -1,9 +1,11 @@
 
-
+import 'package:injectable/injectable.dart';
 import '../models/CarModel.dart';
 
+@injectable
+@singleton
 class CarsDataProvider{
-
+  /// talks with api to get list of top concept cars and return in the format List<CarModel>
   Future<List<CarModel>> fetchMyCars() async{
 
     final List<CarModel> cars = [
@@ -13,7 +15,7 @@ class CarsDataProvider{
           "Chakra",
           "Bagnolis",
           "2024",
-          "assets/drawable/bagnolis_7_chakra"
+          "assets/drawable/bagnolis_7_chakra.jpg"
       ),
 
       CarModel(
@@ -21,7 +23,7 @@ class CarsDataProvider{
           "66",
           "Dalf",
           "2030",
-          "assets/drawable/dalf_runever_66"
+          "assets/drawable/dalf_runever_66.jpg"
       ),
 
       CarModel(
@@ -29,7 +31,7 @@ class CarsDataProvider{
           "Z",
           "Doge",
           "2026",
-          "assets/drawable/doge_infinity_z"
+          "assets/drawable/doge_infinity_z.jpg"
       ),
 
       CarModel(
@@ -37,7 +39,7 @@ class CarsDataProvider{
           "0ff-Road",
           "Rassalis",
           "2023",
-          "assets/drawable/rassalis_off_road"
+          "assets/drawable/rassalis_off_road.jpg"
       ),
 
       CarModel(
@@ -45,7 +47,7 @@ class CarsDataProvider{
           "XG24",
           "Rieverendo",
           "2028",
-          "assets/drawable/rieverendo_xg24"
+          "assets/drawable/rieverendo_xg24.jpg"
       ),
 
       CarModel(
@@ -53,7 +55,7 @@ class CarsDataProvider{
           "9",
           "Russolini",
           "2024",
-          "assets/drawable/russolini_9"
+          "assets/drawable/russolini_9.jpg"
       ),
 
       CarModel(
@@ -61,7 +63,7 @@ class CarsDataProvider{
           "Eclair",
           "Spawn",
           "2022",
-          "assets/drawable/spawn_eclair"
+          "assets/drawable/spawn_eclair.jpg"
       ),
 
       CarModel(
@@ -69,7 +71,7 @@ class CarsDataProvider{
           "16",
           "Volce",
           "2026",
-          "assets/drawable/volce_16"
+          "assets/drawable/volce_16.jpg"
       )
 
     ];

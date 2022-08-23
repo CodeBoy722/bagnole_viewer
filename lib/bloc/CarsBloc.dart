@@ -1,20 +1,21 @@
 
-import 'package:inject/inject.dart';
+import 'package:injectable/injectable.dart';
 import 'package:rxdart/rxdart.dart';
-import '../di/bloc_base.dart';
 import '../models/CarModel.dart';
 import '../resources/Repository.dart';
 
-class CarsBloc extends BlocBase{
-  final _repo;
-  late final _carsFetcher;
+@injectable
+@singleton
+class CarsBloc {
+  /// the is a bloc class, it the equivilent of a viewModel in MVVM architecture
+ /* CarsBloc._privateConstructor();
+  static final carsBlocInstance = CarsBloc._privateConstructor();*/
+
+  /// cars provider initialization with by dependency injection
+  final Repository _repo;
+  late final _carsFetcher = PublishSubject<List<CarModel>>();
   Stream<List<CarModel>> get allCars => _carsFetcher.stream;
 
-  init(){
-    _carsFetcher = PublishSubject<List<CarModel>>();
-  }
-
-  @provide
   CarsBloc(this._repo);
 
   fetAllMyCars() async {
@@ -22,7 +23,7 @@ class CarsBloc extends BlocBase{
     _carsFetcher.sink.add(cars);
   }
 
-  @override
+  /// disposing of bloc while activity complete
   dispose() {
     _carsFetcher.close();
   }

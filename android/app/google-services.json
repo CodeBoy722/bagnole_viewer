@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "777307027847",
+    "project_id": "bagnole-viewer",
+    "storage_bucket": "bagnole-viewer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:777307027847:android:011dc300f4efc88ae1bb22",
+        "android_client_info": {
+          "package_name": "com.kola.bagnoleviewer.bagnole_viewer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "777307027847-b85k236fvgc694ca4gqicsr3me71o7sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHZiEsMsPmRvxfE44rzrudG9PDeECgfCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "777307027847-b85k236fvgc694ca4gqicsr3me71o7sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
