@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import '../models/CarModel.dart';
@@ -8,24 +10,47 @@ import '../models/CarModel.dart';
 class CarsDataProvider{
 
   /// talks with api/firebase to get list of top concept cars and return in the format List<CarModel>
-  Future<List<CarModel>> fetchMyCars() async{
-
-    final List<CarModel> cars = [];
+  Future<StreamSubscription<QuerySnapshot<Object?>>> fetchMyCars() async{
     Stream<QuerySnapshot> carsCollection = FirebaseFirestore.instance.collection("concept_cars").snapshots();
-     carsCollection.listen((QuerySnapshot querySnapshot) async => {
-        await Future.forEach(querySnapshot.docs, (QueryDocumentSnapshot item) async {
-             cars.add(CarModel(
-                 await item.get("model"),
-                 await item.get("series"),
-                 await item.get("mark"),
-                 await item.get("year"),
-                 await item.get("image")
-         ));
-       })
-    });
-
-    return cars;
+    return carsCollection.listen((QuerySnapshot querySnapshot)  =>
+        querySnapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
+        CarModel(
+            queryDoc.get("model"),
+            queryDoc.get("series"),
+            queryDoc.get("mark"),
+            queryDoc.get("year"),
+            queryDoc.get("image"))
+    ).toList());
   }
+
+  Stream<List<CarModel>> get fetchCarsStream{
+    return FirebaseFirestore.instance.collection("concept_cars").snapshots()
+        .map((QuerySnapshot snapshot) =>
+        snapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
+            CarModel(
+                queryDoc.get("model"),
+                queryDoc.get("series"),
+                queryDoc.get("mark"),
+                queryDoc.get("year"),
+                queryDoc.get("image"))
+        ).toList());
+  }
+
+
+  /*await Future.forEach(querySnapshot.docs, (QueryDocumentSnapshot item) async {
+  cars.add(CarModel(
+  item.get("model"),
+  item.get("series"),
+  item.get("mark"),
+  item.get("year"),
+  item.get("image")
+
+  ));
+})
+
+}*/
+
+
 
   /*for (var document in querySnapshot.docs) {
   cars.add(CarModel(

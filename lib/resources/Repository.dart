@@ -10,6 +10,6 @@ class Repository{
   final CarsDataProvider carsProvider;
   Repository(this.carsProvider);
 
-  Future<List<CarModel>> fetchAllMyCars() => carsProvider.fetchMyCars();
+  Stream<List<CarModel>> fetchAllMyCars() => carsProvider.fetchCarsStream;
 
 }

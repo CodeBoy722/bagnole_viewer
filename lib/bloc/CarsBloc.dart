@@ -14,13 +14,24 @@ class CarsBloc {
   /// cars provider initialization with by dependency injection
   final Repository _repo;
   late final _carsFetcher = PublishSubject<List<CarModel>>();
-  Stream<List<CarModel>> get allCars => _carsFetcher.stream;
+  Stream<List<CarModel>> get allCars => _repo.fetchAllMyCars();
 
   CarsBloc(this._repo);
 
   fetAllMyCars() async {
-    List<CarModel> cars = await _repo.fetchAllMyCars();
+    List<CarModel> cars =  composeList();
     _carsFetcher.sink.add(cars);
+  }
+
+  List<CarModel> composeList() {
+    List<CarModel> newCars = [];
+    Stream<List<CarModel>> carsStream = _repo.fetchAllMyCars();
+    carsStream.listen((List<CarModel> cars) {
+      for(CarModel car in cars){
+        newCars.add(car);
+      }
+    });
+    return newCars;
   }
 
   /// disposing of bloc while activity complete
