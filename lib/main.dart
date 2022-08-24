@@ -1,9 +1,10 @@
 import 'package:bagnole_viewer/bloc/CarsBloc.dart';
 import 'package:bagnole_viewer/controllers/State_controller.dart';
 import 'package:bagnole_viewer/di/injection.dart';
+import 'package:bagnole_viewer/ui/add_car_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'models/CarModel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -126,7 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          //todo add new car
+          Get.to(const AddCarDialog());
         },
         tooltip: 'Increment',
         backgroundColor: const Color.fromRGBO(81, 52, 72, 1),
