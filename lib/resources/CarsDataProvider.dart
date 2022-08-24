@@ -9,20 +9,7 @@ import '../models/CarModel.dart';
 @singleton
 class CarsDataProvider{
 
-  /// talks with api/firebase to get list of top concept cars and return in the format List<CarModel>
-  Future<StreamSubscription<QuerySnapshot<Object?>>> fetchMyCars() async{
-    Stream<QuerySnapshot> carsCollection = FirebaseFirestore.instance.collection("concept_cars").snapshots();
-    return carsCollection.listen((QuerySnapshot querySnapshot)  =>
-        querySnapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
-        CarModel(
-            queryDoc.get("model"),
-            queryDoc.get("series"),
-            queryDoc.get("mark"),
-            queryDoc.get("year"),
-            queryDoc.get("image"))
-    ).toList());
-  }
-
+  /// talks with api/firebase to get list of top concept cars and return stream of List<CarModel>
   Stream<List<CarModel>> get fetchCarsStream{
     return FirebaseFirestore.instance.collection("concept_cars").snapshots()
         .map((QuerySnapshot snapshot) =>
@@ -35,6 +22,23 @@ class CarsDataProvider{
                 queryDoc.get("image"))
         ).toList());
   }
+
+
+
+
+
+/*Future<StreamSubscription<QuerySnapshot<Object?>>> fetchMyCars() async{
+    Stream<QuerySnapshot> carsCollection = FirebaseFirestore.instance.collection("concept_cars").snapshots();
+    return carsCollection.listen((QuerySnapshot querySnapshot)  =>
+        querySnapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
+        CarModel(
+            queryDoc.get("model"),
+            queryDoc.get("series"),
+            queryDoc.get("mark"),
+            queryDoc.get("year"),
+            queryDoc.get("image"))
+    ).toList());
+  }*/
 
 
   /*await Future.forEach(querySnapshot.docs, (QueryDocumentSnapshot item) async {

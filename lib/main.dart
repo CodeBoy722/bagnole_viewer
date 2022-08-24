@@ -55,13 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     /// getting an instance of bloc(viewModel)
     super.initState();
-    widget.carsBloc.fetAllMyCars();
+    //widget.carsBloc.fetAllMyCars();
   }
 
   @override
   void dispose() {
     /// disposing of bloc(viewModel)
-    widget.carsBloc.dispose();
+    //widget.carsBloc.dispose();
     super.dispose();
   }
 
