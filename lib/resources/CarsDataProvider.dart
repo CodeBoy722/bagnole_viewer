@@ -1,14 +1,58 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import '../models/CarModel.dart';
 
 @injectable
 @singleton
 class CarsDataProvider{
-  /// talks with api to get list of top concept cars and return in the format List<CarModel>
+
+  /// talks with api/firebase to get list of top concept cars and return in the format List<CarModel>
   Future<List<CarModel>> fetchMyCars() async{
 
-    final List<CarModel> cars = [
+    final List<CarModel> cars = [];
+    Stream<QuerySnapshot> carsCollection = FirebaseFirestore.instance.collection("concept_cars").snapshots();
+     carsCollection.listen((QuerySnapshot querySnapshot) async => {
+        await Future.forEach(querySnapshot.docs, (QueryDocumentSnapshot item) async {
+             cars.add(CarModel(
+                 await item.get("model"),
+                 await item.get("series"),
+                 await item.get("mark"),
+                 await item.get("year"),
+                 await item.get("image")
+         ));
+       })
+    });
+
+    return cars;
+  }
+
+  /*for (var document in querySnapshot.docs) {
+  cars.add(CarModel(
+  document.get("model"),
+  document.get("series"),
+  document.get("mark"),
+  document.get("year"),
+  document.get("image")
+  ));
+  }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*final List<CarModel> cars = [
 
       CarModel(
           "Bagnolis 7",
@@ -74,10 +118,6 @@ class CarsDataProvider{
           "assets/drawable/volce_16.jpg"
       )
 
-    ];
-
-    return cars;
-  }
-
+    ];*/
 
 }
