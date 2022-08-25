@@ -10,9 +10,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
-  ///init di
+  ///init Di
   configureInjection(Env.prod);
-
   ///init firebase resources
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -135,7 +134,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-
 
   Widget buildList(AsyncSnapshot<List<CarModel>> snapshot) {
     return ListView.builder(
