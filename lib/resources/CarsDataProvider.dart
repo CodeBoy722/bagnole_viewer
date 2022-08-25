@@ -27,49 +27,6 @@ class CarsDataProvider{
 
 
 
-/*Future<StreamSubscription<QuerySnapshot<Object?>>> fetchMyCars() async{
-    Stream<QuerySnapshot> carsCollection = FirebaseFirestore.instance.collection("concept_cars").snapshots();
-    return carsCollection.listen((QuerySnapshot querySnapshot)  =>
-        querySnapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
-        CarModel(
-            queryDoc.get("model"),
-            queryDoc.get("series"),
-            queryDoc.get("mark"),
-            queryDoc.get("year"),
-            queryDoc.get("image"))
-    ).toList());
-  }*/
-
-
-  /*await Future.forEach(querySnapshot.docs, (QueryDocumentSnapshot item) async {
-  cars.add(CarModel(
-  item.get("model"),
-  item.get("series"),
-  item.get("mark"),
-  item.get("year"),
-  item.get("image")
-
-  ));
-})
-
-}*/
-
-
-
-  /*for (var document in querySnapshot.docs) {
-  cars.add(CarModel(
-  document.get("model"),
-  document.get("series"),
-  document.get("mark"),
-  document.get("year"),
-  document.get("image")
-  ));
-  }*/
-
-
-
-
-
 
 
 

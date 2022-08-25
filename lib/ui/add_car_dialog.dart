@@ -24,7 +24,7 @@ class _AddCarDialogState extends State<AddCarDialog>{
   Future<void> saveNewCarToFirebase() async{
     CollectionReference carsCollection = FirebaseFirestore.instance.collection("concept_cars");
 
-    return carsCollection.doc()//"r7sVBWiJ5gmdopM6i7tG"
+    return carsCollection.doc()
         .set({
       'model': _newCar.model,
       'series': _newCar.series,
@@ -46,11 +46,11 @@ class _AddCarDialogState extends State<AddCarDialog>{
 
       body: Center(
         child: Container(
-            height: 400,
+            height: 550,
             width: double.infinity,
             alignment: Alignment.center,
             color: Colors.white,
-            margin: const EdgeInsetsDirectional.only(end: 24.0,start: 24.0, top: 0.0),
+            margin: const EdgeInsetsDirectional.only(end: 16.0,start: 16.0, top: 0.0),
 
             child: Form(
               key: _formKey,
@@ -157,9 +157,58 @@ class _AddCarDialogState extends State<AddCarDialog>{
                   Expanded(
                       flex: 1,
                       child: Container(
-                        width: 200,
-                        margin: const EdgeInsetsDirectional.only(start: 16.0,end: 16.0,top: 8.0,bottom: 22.0),
-                        height: 80,
+                        width: double.infinity,
+                        margin: const EdgeInsetsDirectional.only(top: 8.0,bottom: 22.0),
+                        height: double.infinity,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          color: const Color.fromRGBO(81, 52, 72, 1),
+                          boxShadow: const [
+                            BoxShadow(color: Colors.white, spreadRadius: 3),
+                          ],
+                        ),
+
+                        child: GestureDetector(
+                          onTap: (){
+                            /// implement image select
+                          },
+                          child: Row(
+                            children: [
+                              const Expanded(
+                                flex: 2,
+                                  child: Text(
+                                      "Select Car Image",
+                                      textAlign: TextAlign.end,
+                                      style: TextStyle(color: Color.fromRGBO(252, 178, 61, 1),
+                                          fontWeight: FontWeight.w500)
+                                  )
+                              ),
+
+                              Expanded(
+                                  flex: 1,
+                                  child: Image.asset(
+                                    "assets/drawable/image_upload.png",
+                                    height: 20,
+                                    width: 20,
+                                    color: const Color.fromRGBO(252, 178, 61, 1),
+                                    alignment: Alignment.center,
+                                  )
+                              ),
+
+                            ],
+                          ),
+                        ),
+                      )
+                  ),
+
+                  Expanded(
+                      flex: 1,
+                      child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsetsDirectional.only(top: 8.0,bottom: 22.0),
+                        height: double.infinity,
+
                         child: TextButton(
                           onPressed: () async{
                             // Validate returns true if the form is valid, or false otherwise.
@@ -167,7 +216,7 @@ class _AddCarDialogState extends State<AddCarDialog>{
                               // If the form is valid, display a snackbar. In the real world,
                               // you'd often call a server or save the information in a database.
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(content: Text("Saving new Concept car")),
+                                const SnackBar(content: Text("All good,saving your new Concept car")),
                               );
                               _newCar.image = "assets/drawable/volce_16.jpg";
                               await saveNewCarToFirebase();
@@ -182,7 +231,7 @@ class _AddCarDialogState extends State<AddCarDialog>{
                               fixedSize: const Size(200, 25)
                           ),
 
-                          child: const Text("Save Car",
+                          child: const Text("Save Concept Car",
                               style: TextStyle(color: Color.fromRGBO(252, 178, 61, 1))
                           ),
                         ),

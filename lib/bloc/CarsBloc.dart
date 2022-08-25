@@ -18,16 +18,3 @@ class CarsBloc {
   }
 
 }
-
-
-
-// List<CarModel> composeList() {
-//   List<CarModel> newCars = [];
-//   Stream<List<CarModel>> carsStream = _repo.fetchAllMyCars();
-//   carsStream.listen((List<CarModel> cars) {
-//     for(CarModel car in cars){
-//       newCars.add(car);
-//     }
-//   });
-//   return newCars;
-// }
