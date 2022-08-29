@@ -2,15 +2,15 @@
 import 'package:injectable/injectable.dart';
 import '../di/injection.dart';
 import '../models/CarModel.dart';
-import 'CarsDataProvider.dart';
+import 'CarsDataProviderTest.dart';
 
-@Environment(Env.prod)
+@Environment(Env.test)
 @injectable
 @singleton
-class Repository {
-  final CarsDataProvider carsProvider;
+class RepositoryTest{
+  final CarsDataProviderTest carsProvider;
 
-  Repository(this.carsProvider);
+  RepositoryTest(this.carsProvider);
 
   Stream<List<CarModel>> fetchAllMyCars() => carsProvider.fetchCarsStream;
 

@@ -1,21 +1,21 @@
 
-import 'package:flutter/material.dart';
+
+
 import 'package:injectable/injectable.dart';
 import '../di/injection.dart';
 import '../models/CarModel.dart';
-import '../resources/Repository.dart';
+import '../resources/RepositoryTest.dart';
 
-@Environment(Env.prod)
+@Environment(Env.test)
 @injectable
 @singleton
-class CarsBloc {
+class CarsBlocTest {
   /// cars provider initialization with by dependency injection
-  final Repository _repo;
+  final RepositoryTest _repo;
   Stream<List<CarModel>> get allCars => _repo.fetchAllMyCars();
 
-  CarsBloc(this._repo);
+  CarsBlocTest(this._repo);
 
-  @disposeMethod
   dispose() {
     /// implement bloc dispose logic here
   }

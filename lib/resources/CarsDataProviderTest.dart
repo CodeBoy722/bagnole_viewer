@@ -1,15 +1,15 @@
 
-import 'dart:async';
+
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
 import '../di/injection.dart';
 import '../models/CarModel.dart';
 
-@Environment(Env.prod)
+@Environment(Env.test)
 @injectable
 @singleton
-class CarsDataProvider{
+class CarsDataProviderTest{
 
   /// talks with api/firebase to get list of top concept cars and return stream of List<CarModel>
   Stream<List<CarModel>> get fetchCarsStream{
@@ -24,6 +24,7 @@ class CarsDataProvider{
                 queryDoc.get("image"))
         ).toList());
   }
+
 
   @disposeMethod
   dispose() {

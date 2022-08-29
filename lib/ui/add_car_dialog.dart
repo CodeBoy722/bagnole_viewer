@@ -5,8 +5,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AddCarDialog extends StatefulWidget{
   const AddCarDialog({Key? key}) : super(key: key);
@@ -73,13 +73,13 @@ class _AddCarDialogState extends State<AddCarDialog>{
                   Expanded(
                     flex: 1,
                     child:  TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Concept car name",
+                      decoration: InputDecoration(
+                        border:  const OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context)!.concept_car_name,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter a model name";
+                          return AppLocalizations.of(context)!.concept_car_name_error;
                         }else{
                           _newCar.model = value;
                         }
@@ -94,13 +94,13 @@ class _AddCarDialogState extends State<AddCarDialog>{
                   Expanded(
                     flex: 1,
                     child:  TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Series",
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context)!.series,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter a Series";
+                          return AppLocalizations.of(context)!.series_error;
                         }else{
                           _newCar.series = value;
                         }
@@ -115,13 +115,13 @@ class _AddCarDialogState extends State<AddCarDialog>{
                   Expanded(
                     flex: 1,
                     child:  TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Mark",
+                      decoration: InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context)!.mark,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter the car's Mark";
+                          return AppLocalizations.of(context)!.mark_error;
                         }else{
                           _newCar.mark = value;
                         }
@@ -136,13 +136,13 @@ class _AddCarDialogState extends State<AddCarDialog>{
                   Expanded(
                     flex: 1,
                     child:  TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Realization Year",
+                      decoration:  InputDecoration(
+                        border: const OutlineInputBorder(),
+                        hintText: AppLocalizations.of(context)!.rea_year,
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return "Please enter the year this car will be out";
+                          return AppLocalizations.of(context)!.rea_year_error;
                         }else{
                           _newCar.year = value;
                         }

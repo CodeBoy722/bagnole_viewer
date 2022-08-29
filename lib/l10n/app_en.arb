@@ -1,0 +1,12 @@
+{
+    "helloWorld": "Hello World!",
+    "page_title": "Top Concept Cars 2030",
+    "concept_car_name": "Concept car name",
+    "concept_car_name_error": "Please enter a model name",
+    "series": "Series",
+    "series_error": "Please enter a Series",
+    "mark": "Mark",
+    "mark_error": "Please enter the car's Mark",
+    "rea_year": "Realization Year",
+    "rea_year_error": "Please enter the year this car will be out"
+}

@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'models/CarModel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   ///init Di
@@ -30,6 +32,18 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Bagnole Viewer',
       debugShowCheckedModeBanner: false,
+
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''), // English, no country code
+        Locale('fr', ''), // french, no country code
+      ],
+
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -60,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void dispose() {
     /// disposing of bloc(viewModel)
-    //widget.carsBloc.dispose();
+    widget.carsBloc.dispose();
     super.dispose();
   }
 
@@ -88,8 +102,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: const EdgeInsetsDirectional.only(end: 16.0,start: 16.0, top: 0.0),
                 alignment: Alignment.center,
 
-                child: const Text( "Top Concept Cars 2030", textAlign: TextAlign.center,
-                  style: TextStyle(
+                child: Text( AppLocalizations.of(context)!.page_title,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
                       fontSize: 20,
                       fontFamily: "assets/fonts/Poppins-Bold.ttf",
                       color: Color.fromRGBO(81, 52, 72, 1),
@@ -120,7 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               )
           )
-
         ],
 
       ),
@@ -128,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: (){
           Get.to(const AddCarDialog());
         },
-        tooltip: 'Increment',
+        tooltip: "add a car",
         backgroundColor: const Color.fromRGBO(81, 52, 72, 1),
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

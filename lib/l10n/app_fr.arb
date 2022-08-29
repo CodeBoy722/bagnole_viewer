@@ -1,0 +1,12 @@
+{
+    "helloWorld": "Bonjour a tous",
+    "page_title": "Le meilleur des Concept Cars 2030",
+    "concept_car_name": "Nom du concept-car",
+    "concept_car_name_error": "Veuillez entrer un nom de modèle",
+    "series": "Série",
+    "series_error": "Veuillez saisir une série",
+    "mark": "Marquer",
+    "mark_error": "Veuillez entrer la marque de la voiture",
+    "rea_year": "Année de réalisation",
+    "rea_year_error": "Veuillez saisir l'année de sortie de cette voiture"
+}
