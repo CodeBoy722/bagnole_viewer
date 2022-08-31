@@ -14,9 +14,9 @@ class Repository {
 
   Stream<List<CarModel>> fetchAllMyCars() => carsProvider.fetchCarsStream;
 
-  Stream<List<CarModel>> fetchCarsByYear(String queryYear) => carsProvider.fetchCarsStreamByYear("");
+  Stream<List<CarModel>> fetchCarsByYear(String queryYear) => carsProvider.fetchCarsStreamByYear(queryYear);
 
-  Stream<List<CarModel>> fetchCarsByMark(String queryMark) => carsProvider.fetchCarsStreamByMark("");
+  Stream<List<CarModel>> fetchCarsByMark(String queryMark) => carsProvider.fetchCarsStreamByMark(queryMark);
 
   @disposeMethod
   dispose() {

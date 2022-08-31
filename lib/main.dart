@@ -129,12 +129,12 @@ class MyHomePage extends StatelessWidget {
                                         color: Color.fromRGBO(81, 52, 72, 1),
                                       ),
                                       onPressed: (){
-                                        context.read<CarsBloc>().add(GetCars());
+                                        //context.read<CarsBloc>().add(GetCars());
                                       },
                                     )
                                   ),
                                   onChanged: (text){
-                                    context.read<CarsBloc>().add(GetCarsByYear(queryYear: text));
+                                    context.read<CarsBloc>().add(GetCarsByYear(queryYear: "2026"));
                                   },
                                 ),
                               );
@@ -164,7 +164,7 @@ class MyHomePage extends StatelessWidget {
                                       )
                                   ),
                                   onChanged: (text){
-                                    context.read<CarsBloc>().add(GetCarsByMark(queryMark: text));
+                                    context.read<CarsBloc>().add(GetCarsByMark(queryMark: "Volce"));
                                   },
                                 ),
                               );

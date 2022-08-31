@@ -25,9 +25,10 @@ class FirestoreCarsService{
         ).toList());
   }
 
+
   ///returns a stream of car model from firestore as per the queried year
   Stream<List<CarModel>> fetchCarsStreamByYear(String year) {
-    return FirebaseFirestore.instance.collection("concept_cars")
+    return  FirebaseFirestore.instance.collection("concept_cars")//.snapshots()
         .where("year", isEqualTo: year).snapshots()
         .map((QuerySnapshot snapshot) =>
         snapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
