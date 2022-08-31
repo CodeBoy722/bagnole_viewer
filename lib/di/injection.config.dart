@@ -25,12 +25,12 @@ const String _unit_tests = 'unit_tests';
 _i1.GetIt $initGetIt(_i1.GetIt get,
     {String? environment, _i2.EnvironmentFilter? environmentFilter}) {
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
-  gh.factory<_i3.CarsDataProvider>(() => _i3.CarsDataProvider(),
+  gh.factory<_i3.FirestoreCarsService>(() => _i3.FirestoreCarsService(),
       registerFor: {_production});
   gh.factory<_i4.CarsDataProviderTest>(() => _i4.CarsDataProviderTest(),
       registerFor: {_unit_tests});
   gh.factory<_i5.FormController>(() => _i5.FormController());
-  gh.factory<_i6.Repository>(() => _i6.Repository(get<_i3.CarsDataProvider>()),
+  gh.factory<_i6.Repository>(() => _i6.Repository(get<_i3.FirestoreCarsService>()),
       registerFor: {_production});
   gh.factory<_i7.RepositoryTest>(
       () => _i7.RepositoryTest(get<_i4.CarsDataProviderTest>()),

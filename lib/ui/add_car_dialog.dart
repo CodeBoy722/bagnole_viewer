@@ -63,7 +63,6 @@ class _AddCarDialogState extends State<AddCarDialog>{
                       child: Text( "Add New Concept Car", textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: 18,
-                            fontFamily: "assets/fonts/Poppins-Bold.ttf",
                             color: Color.fromRGBO(81, 52, 72, 1),
                             fontWeight: FontWeight.w700
                         ),

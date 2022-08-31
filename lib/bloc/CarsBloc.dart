@@ -1,19 +1,41 @@
 
+import 'package:bagnole_viewer/bloc/CarsBloc_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../di/injection.dart';
 import '../models/CarModel.dart';
 import '../resources/Repository.dart';
+import 'CarsBloc_state.dart';
 
 @Environment(Env.prod)
 @injectable
 @singleton
-class CarsBloc {
-  /// cars provider initialization with by dependency injection
+class CarsBloc extends Bloc<CarsEvent, CarsStreamState>{
   final Repository _repo;
-  Stream<List<CarModel>> get allCars => _repo.fetchAllMyCars();
+  //Stream<List<CarModel>> get allCars => _repo.fetchAllMyCars();
 
-  CarsBloc(this._repo);
+  CarsBloc(this._repo) : super(const CarsStreamState( carsStream: null)){
+    on<GetCars>(mapNewStreamEventToState);
+    on<GetCarsByYear>(mapNewStreamByYearToState);
+    on<GetCarsByMark>(mapNewStreamByMarkToState);
+  }
+
+  void mapNewStreamEventToState(GetCars event, Emitter<CarsStreamState> emit) {
+    Stream<List<CarModel>> allCars = _repo.fetchAllMyCars();
+    emit(state.sendStreamState(newStream: allCars));
+  }
+
+  void mapNewStreamByYearToState(GetCarsByYear event, Emitter<CarsStreamState> emit) {
+    Stream<List<CarModel>> carsByYear = _repo.fetchCarsByYear(event.queryYear);
+    emit(state.sendStreamState(newStream: carsByYear));
+  }
+
+  void mapNewStreamByMarkToState(GetCarsByMark event, Emitter<CarsStreamState> emit){
+    Stream<List<CarModel>> carsByMark = _repo.fetchCarsByMark(event.queryMark);
+    emit(state.sendStreamState(newStream: carsByMark));
+  }
+
 
   @disposeMethod
   dispose() {
