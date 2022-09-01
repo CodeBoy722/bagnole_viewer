@@ -22,16 +22,19 @@ class CarsBloc extends Bloc<CarsEvent, CarsStreamState>{
   }
 
   void mapNewStreamEventToState(GetCars event, Emitter<CarsStreamState> emit) {
+    emit(state.sendStreamState(newStream: null));
     Stream<List<CarModel>> allCars = _repo.fetchAllMyCars();
     emit(state.sendStreamState(newStream: allCars));
   }
 
   void mapNewStreamByYearToState(GetCarsByYear event, Emitter<CarsStreamState> emit) {
+    emit(state.sendStreamState(newStream: null));
     Stream<List<CarModel>> carsByYear = _repo.fetchCarsByYear(event.queryYear);
     emit(state.sendStreamState(newStream: carsByYear));
   }
 
   void mapNewStreamByMarkToState(GetCarsByMark event, Emitter<CarsStreamState> emit){
+    emit(state.sendStreamState(newStream: null));
     Stream<List<CarModel>> carsByMark = _repo.fetchCarsByMark(event.queryMark);
     emit(state.sendStreamState(newStream: carsByMark));
   }

@@ -1,6 +1,3 @@
-
-
-
 import 'package:bagnole_viewer/models/CarModel.dart';
 import 'package:equatable/equatable.dart';
 
@@ -16,7 +13,7 @@ class CarsStreamState extends Equatable{
 
   CarsStreamState sendStreamState({ required Stream<List<CarModel>>? newStream}) {
     return CarsStreamState(
-      carsStream: newStream ?? carsStream,
+      carsStream: newStream,
     );
   }
 

@@ -1,7 +1,6 @@
 import 'package:bagnole_viewer/bloc/CarsBloc.dart';
 import 'package:bagnole_viewer/bloc/CarsBloc_event.dart';
 import 'package:bagnole_viewer/bloc/CarsBloc_state.dart';
-import 'package:bagnole_viewer/controllers/State_controller.dart';
 import 'package:bagnole_viewer/di/injection.dart';
 import 'package:bagnole_viewer/resources/CarsDataProvider.dart';
 import 'package:bagnole_viewer/resources/Repository.dart';
@@ -33,7 +32,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -63,10 +61,9 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -82,7 +79,7 @@ class MyHomePage extends StatelessWidget {
       body: RepositoryProvider(
         create: (context) => Repository(getIt<FirestoreCarsService>()),
         child: BlocProvider(
-          create: (context) => CarsBloc(context.read<Repository>()),
+          create: (context) => CarsBloc(context.read<Repository>())..add(GetCars()),// trigger initial event
           child: Column(
             children: [
 
@@ -123,18 +120,18 @@ class MyHomePage extends StatelessWidget {
                                   decoration:  InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: AppLocalizations.of(context)!.rea_year,
-                                    suffixIcon: IconButton(
+                                   /* suffixIcon: IconButton(
                                       icon: const FaIcon(
                                         FontAwesomeIcons.magnifyingGlass,
                                         color: Color.fromRGBO(81, 52, 72, 1),
                                       ),
                                       onPressed: (){
-                                        //context.read<CarsBloc>().add(GetCars());
+
                                       },
-                                    )
+                                    )*/
                                   ),
                                   onChanged: (text){
-                                    context.read<CarsBloc>().add(GetCarsByYear(queryYear: "2026"));
+                                    context.read<CarsBloc>().add(GetCarsByYear(queryYear: text));
                                   },
                                 ),
                               );
@@ -153,7 +150,7 @@ class MyHomePage extends StatelessWidget {
                                   decoration:  InputDecoration(
                                     border: const OutlineInputBorder(),
                                     hintText: AppLocalizations.of(context)!.mark,
-                                      suffixIcon: IconButton(
+                                      /*suffixIcon: IconButton(
                                         icon: const FaIcon(
                                           FontAwesomeIcons.magnifyingGlass,
                                           color: Color.fromRGBO(81, 52, 72, 1),
@@ -161,10 +158,10 @@ class MyHomePage extends StatelessWidget {
                                         onPressed: (){
 
                                         },
-                                      )
+                                      )*/
                                   ),
                                   onChanged: (text){
-                                    context.read<CarsBloc>().add(GetCarsByMark(queryMark: "Volce"));
+                                    context.read<CarsBloc>().add(GetCarsByMark(queryMark: text));
                                   },
                                 ),
                               );
