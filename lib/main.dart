@@ -198,6 +198,16 @@ class MyHomePage extends StatelessWidget {
                     ],
                   )
               )
+              
+              /*BlocListener<CarsBloc, CarsStreamState>(
+                listener: (context, state) {
+                  if(state.carsStream){
+
+                  }
+                },
+                child: Text("bloc listener"),
+              )*/
+              
             ],
 
           ),
