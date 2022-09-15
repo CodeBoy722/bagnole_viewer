@@ -202,6 +202,16 @@ class MyHomePage extends StatelessWidget {
                     ].animate(interval: 400.ms).fade(duration: 300.ms),
                   )
               )
+              
+              /*BlocListener<CarsBloc, CarsStreamState>(
+                listener: (context, state) {
+                  if(state.carsStream){
+
+                  }
+                },
+                child: Text("bloc listener"),
+              )*/
+              
             ],
 
           ),
