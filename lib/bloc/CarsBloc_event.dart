@@ -11,6 +11,7 @@ abstract class CarsEvent extends Equatable{
 
 class GetCars extends CarsEvent {}
 
+
 class GetCarsByYear extends CarsEvent{
   const GetCarsByYear({
     required this.queryYear,
@@ -21,6 +22,7 @@ class GetCarsByYear extends CarsEvent{
   @override
   List<Object> get props => [queryYear];
 }
+
 
 class GetCarsByMark extends CarsEvent{
   const GetCarsByMark({

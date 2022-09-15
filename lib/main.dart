@@ -7,6 +7,10 @@ import 'package:bagnole_viewer/resources/Repository.dart';
 import 'package:bagnole_viewer/ui/add_car_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/animate.dart';
+import 'package:flutter_animate/animate_list.dart';
+import 'package:flutter_animate/effects/effects.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -98,7 +102,7 @@ class MyHomePage extends StatelessWidget {
                           color: const Color.fromRGBO(81, 52, 72, 1),
                           fontWeight: FontWeight.w700
                       ),
-                    ),
+                    )
                   )
               ),
 
@@ -195,7 +199,7 @@ class MyHomePage extends StatelessWidget {
                             },
                           ),
                       )
-                    ],
+                    ].animate(interval: 400.ms).fade(duration: 300.ms),
                   )
               )
             ],
@@ -225,7 +229,7 @@ class MyHomePage extends StatelessWidget {
               shadowColor: const Color.fromRGBO(81, 52, 72, 1),
               child: Container(
                 alignment: Alignment.center,
-                height: 100,
+                height: 110,
                 width: double.infinity,
                 child: Row(
                   children: [
@@ -234,12 +238,15 @@ class MyHomePage extends StatelessWidget {
                         child: Container(
                           alignment: Alignment.center,
                           margin: const EdgeInsetsDirectional.only(start: 8.0),
-                          child: Image.asset(
-                            snapshot.data!.elementAt(index).image,
-                            fit: BoxFit.cover,
-                            height: 95,
-                            width: double.infinity,
-                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8.0),
+                            child: Image.asset(
+                              snapshot.data!.elementAt(index).image,
+                              fit: BoxFit.fill,
+                              height: 95,
+                              width: double.infinity,
+                            ),
+                          )
                         )
                     ),
 
