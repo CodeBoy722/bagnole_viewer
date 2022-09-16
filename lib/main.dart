@@ -264,7 +264,6 @@ class MyHomePage extends StatelessWidget {
                       flex: 5,
                       child: Column(
                         children: [
-
                           Expanded(
                               flex: 1,
                               child: Container(
@@ -312,7 +311,6 @@ class MyHomePage extends StatelessWidget {
                                 ),
                               )
                           ),
-
                         ],
                       ),
                     ),
@@ -334,8 +332,6 @@ class MyHomePage extends StatelessWidget {
                   ],
                 ),
               )
-
-
           );
         });
   }
