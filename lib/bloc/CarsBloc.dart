@@ -1,7 +1,6 @@
 
 import 'package:bagnole_viewer/bloc/CarsBloc_event.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 import '../di/injection.dart';
 import '../models/CarModel.dart';
@@ -11,7 +10,7 @@ import 'CarsBloc_state.dart';
 @Environment(Env.prod)
 @injectable
 @singleton
-class CarsBloc extends Bloc<CarsEvent, CarsStreamState>{
+class CarsBloc extends Bloc<CarsEvent, CarsStreamState> with HydratedMixin{
   final Repository _repo;
   //Stream<List<CarModel>> get allCars => _repo.fetchAllMyCars();
 
@@ -43,6 +42,16 @@ class CarsBloc extends Bloc<CarsEvent, CarsStreamState>{
   @disposeMethod
   dispose() {
     /// implement bloc dispose logic here
+  }
+
+  @override
+  CarsStreamState? fromJson(Map<String, dynamic> json) {
+   return CarsStreamState.fromMap(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(CarsStreamState state) {
+   return state.toMap();
   }
 
 }

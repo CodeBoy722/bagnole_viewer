@@ -15,6 +15,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'models/CarModel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -26,11 +28,19 @@ void main() async {
   configureInjection(Env.prod);
   ///init firebase resources
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  final storage = await HydratedStorage.build(
+      storageDirectory: await getApplicationDocumentsDirectory()
+  );
+  HydratedBlocOverrides.runZoned(
+        () => runApp(const MyApp()),
+    storage: storage,
+  );
+
 }
 
 class MyApp extends StatelessWidget {
@@ -83,7 +93,7 @@ class MyHomePage extends StatelessWidget {
       body: RepositoryProvider(
         create: (context) => Repository(getIt<FirestoreCarsService>()),
         child: BlocProvider(
-          create: (context) => CarsBloc(context.read<Repository>())..add(GetCars()),// trigger initial event
+          create: (context) => CarsBloc(context.read<Repository>()),//..add(GetCars()),// trigger initial event
           child: Column(
             children: [
 
@@ -110,7 +120,6 @@ class MyHomePage extends StatelessWidget {
                   flex: 9,
                   child: Column(
                     children: [
-
                       Expanded(
                         flex: 1,
                           child: BlocBuilder<CarsBloc, CarsStreamState>(
