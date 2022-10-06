@@ -208,7 +208,7 @@ class MyHomePage extends StatelessWidget {
                             },
                           ),
                       )
-                    ].animate(interval: 400.ms).fade(duration: 300.ms),
+                    ],
                   )
               )
               
@@ -255,17 +255,17 @@ class MyHomePage extends StatelessWidget {
                     Expanded(
                         flex: 4,
                         child: Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsetsDirectional.only(start: 8.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: Image.asset(
-                              snapshot.data!.elementAt(index).image,
-                              fit: BoxFit.fill,
-                              height: 95,
-                              width: double.infinity,
-                            ),
-                          )
+                            alignment: Alignment.center,
+                            margin: const EdgeInsetsDirectional.only(start: 8.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: Image.asset(
+                                snapshot.data!.elementAt(index).image,
+                                fit: BoxFit.fill,
+                                height: 95,
+                                width: double.infinity,
+                              ),
+                            )
                         )
                     ),
 
@@ -342,7 +342,8 @@ class MyHomePage extends StatelessWidget {
                 ),
               )
           );
-        });
+        }
+    );
   }
 
 }

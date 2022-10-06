@@ -17,11 +17,11 @@ class FirestoreCarsService{
         .map((QuerySnapshot snapshot) =>
         snapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
             CarModel(
-                queryDoc.get("model"),
-                queryDoc.get("series"),
-                queryDoc.get("mark"),
-                queryDoc.get("year"),
-                queryDoc.get("image"))
+                model: queryDoc.get("model"),
+                series: queryDoc.get("series"),
+                mark: queryDoc.get("mark"),
+                year: queryDoc.get("year"),
+                image: queryDoc.get("image"))
         ).toList());
   }
 
@@ -33,11 +33,11 @@ class FirestoreCarsService{
         .map((QuerySnapshot snapshot) =>
         snapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
             CarModel(
-                queryDoc.get("model"),
-                queryDoc.get("series"),
-                queryDoc.get("mark"),
-                queryDoc.get("year"),
-                queryDoc.get("image"))
+                model: queryDoc.get("model"),
+                series: queryDoc.get("series"),
+                mark: queryDoc.get("mark"),
+                year: queryDoc.get("year"),
+                image: queryDoc.get("image"))
         ).toList());
   }
 
@@ -48,11 +48,11 @@ class FirestoreCarsService{
         .map((QuerySnapshot snapshot) =>
         snapshot.docs.map((QueryDocumentSnapshot queryDoc) =>
             CarModel(
-                queryDoc.get("model"),
-                queryDoc.get("series"),
-                queryDoc.get("mark"),
-                queryDoc.get("year"),
-                queryDoc.get("image"))
+                model: queryDoc.get("model"),
+                series: queryDoc.get("series"),
+                mark: queryDoc.get("mark"),
+                year: queryDoc.get("year"),
+                image: queryDoc.get("image"))
         ).toList());
   }
 

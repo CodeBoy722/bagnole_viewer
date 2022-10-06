@@ -21,21 +21,21 @@ class CarsBloc extends Bloc<CarsEvent, CarsStreamState> with HydratedMixin{
   }
 
   void mapNewStreamEventToState(GetCars event, Emitter<CarsStreamState> emit) {
-    emit(state.sendStreamState(newStream: null));
+    emit(state.copyWith(carsStream: null));
     Stream<List<CarModel>> allCars = _repo.fetchAllMyCars();
-    emit(state.sendStreamState(newStream: allCars));
+    emit(state.copyWith(carsStream: allCars));
   }
 
   void mapNewStreamByYearToState(GetCarsByYear event, Emitter<CarsStreamState> emit) {
-    emit(state.sendStreamState(newStream: null));
+    emit(state.copyWith(carsStream: null));
     Stream<List<CarModel>> carsByYear = _repo.fetchCarsByYear(event.queryYear);
-    emit(state.sendStreamState(newStream: carsByYear));
+    emit(state.copyWith(carsStream: carsByYear));
   }
 
   void mapNewStreamByMarkToState(GetCarsByMark event, Emitter<CarsStreamState> emit){
-    emit(state.sendStreamState(newStream: null));
+    emit(state.copyWith(carsStream: null));
     Stream<List<CarModel>> carsByMark = _repo.fetchCarsByMark(event.queryMark);
-    emit(state.sendStreamState(newStream: carsByMark));
+    emit(state.copyWith(carsStream: carsByMark));
   }
 
 

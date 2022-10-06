@@ -8,13 +8,6 @@ class CarsStreamState extends Equatable{
   @override
   List<Object> get props => [carsStream != null];
 
-  CarsStreamState sendStreamState({ required Stream<List<CarModel>>? newStream}) {
-    return CarsStreamState(
-      carsStream: newStream,
-    );
-  }
-
-
   const CarsStreamState({
     this.carsStream,
   });
@@ -34,7 +27,7 @@ class CarsStreamState extends Equatable{
     return 'CarsStreamState{ carsStream: $carsStream,}';
   }
 
-  CarsStreamState copyWith({Stream<List<CarModel>>? carsStream,}) {
+  CarsStreamState copyWith({Stream<List<CarModel>>? carsStream}) {
     return CarsStreamState(
       carsStream: carsStream ?? this.carsStream,
     );
